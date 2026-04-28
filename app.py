@@ -4,12 +4,10 @@ import base64
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Sarath Babu | Portfolio", page_icon="🚀", layout="wide")
 
-# --- CUSTOM CSS FOR STYLING ---
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    .main {
-        background-color: #f5f7f9;
-    }
+    .main { background-color: #f5f7f9; }
     .stButton>button {
         width: 100%;
         border-radius: 5px;
@@ -20,7 +18,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- LOAD RESUME DATA ---
+# --- PDF VIEWER FUNCTION ---
 def get_pdf_display(file_path):
     with open(file_path, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
@@ -28,95 +26,78 @@ def get_pdf_display(file_path):
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.title("Contact Info")
-    st.write("📍 Tirupati, Andhra Pradesh [cite: 31]")
-    st.write("📧 sarathbabu1106@gmail.com ")
-    st.write("🔗 [LinkedIn](https://linkedin.com/in/sarathbabu11) ")
-    st.write("💻 [GitHub](https://github.com/Sarathbabu1106) ")
+    st.title("Contact Details")
+    st.write("📍 Tirupati, Andhra Pradesh")
+    st.write("📧 sarathbabu1106@gmail.com")
+    st.write("🔗 [LinkedIn](https://linkedin.com/in/sarathbabu11)")
+    st.write("💻 [GitHub](https://github.com/Sarathbabu1106)")
     st.write("---")
-    st.write("🎓 **Class of 2026** [cite: 4]")
+    st.write("🎯 **Available for Relocation**")
     
 # --- HEADER ---
-col_head1, col_head2 = st.columns([2, 1])
-with col_head1:
-    st.title("Yellamanda Sarath Babu")
-    st.subheader("B.Tech AI/ML Student | Data Science & GenAI [cite: 4]")
-    st.info("""
-    I am a final-year Computer Science student specializing in AI/ML[cite: 4]. 
-    I build end-to-end data pipelines [cite: 5], production-grade AI agents[cite: 6], 
-    and DAX-driven BI dashboards[cite: 22].
-    """)
+st.title("Yellamanda Sarath Babu")
+st.subheader("B.Tech AI/ML (Class of 2026) | Machine Learning & GenAI Specialist")
+st.write("""
+Proficient in building end-to-end data pipelines using Python, SQL, and Power BI. 
+Experienced in developing production-grade AI agents and predictive models.
+""")
 
-# --- TABS FOR NAVIGATION ---
-tab1, tab2, tab3 = st.tabs(["📂 Projects & Experience", "🛠️ Skills", "📄 Resume Viewer"])
+st.divider()
+
+# --- TABS ---
+tab1, tab2, tab3 = st.tabs(["📂 Projects & Experience", "🛠️ Technical Skills", "📄 Resume Viewer"])
 
 with tab1:
     st.header("Featured Projects")
     
-    # Project 1: AI Chatbot
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        st.write("**AI Personal Chatbot (Agentic RAG)**")
-        st.caption("LangChain, Llama 3.3, ChromaDB [cite: 23, 24, 25]")
-    with c2:
-        st.write("""
-        - Built a fully agentic assistant using ReAct Agent architecture[cite: 24].
-        - Integrated 9 real-time APIs including F1 data and NewsAPI[cite: 26].
-        - Implemented RAG for zero-hallucination document Q&A[cite: 25].
-        """)
+    # Project 1
+    with st.expander("🤖 AI Personal Chatbot – Agentic RAG Assistant", expanded=True):
+        st.write("**Tech:** LangChain, Llama 3.3, ChromaDB")
+        st.write("- Built a fully agentic assistant using ReAct Agent architecture and Llama 3.3 (70B).")
+        st.write("- Integrated 9 real-time APIs including OpenWeatherMap, NewsAPI, and F1 data.")
+        st.write("- Implemented RAG with Gemini Embeddings for zero-hallucination document Q&A.")
 
-    st.write("---")
+    # Project 2
+    with st.expander("📊 Customer Churn Prediction & BI Dashboard"):
+        st.write("**Tech:** Python, Scikit-Learn, Power BI")
+        st.write("- Built predictive system using Random Forest to identify high-risk customers.")
+        st.write("- Engineered Python pipeline to calculate real-time Churn Probability scores.")
+        st.write("- Designed Power BI dashboard isolating Fiber Optic users as key churn segment.")
 
-    # Project 2: Customer Churn
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        st.write("**Customer Churn Prediction & BI**")
-        st.caption("Python, Scikit-Learn, Power BI [cite: 19]")
-    with c2:
-        st.write("""
-        - Developed a Random Forest predictive system to identify high-risk customers[cite: 20].
-        - Engineered a Python pipeline for real-time churn probability scores[cite: 21].
-        - Designed a Power BI dashboard with heatmaps; isolated Fiber Optic users as key churn segment[cite: 22].
-        """)
-
-    st.header("Internship Experience")
-    st.write(f"**Data Science Intern** | Codtech IT Solutions (May – Jul 2025) [cite: 12]")
-    st.write("- Built automated predictive pipelines using Scikit-learn[cite: 13].")
-    st.write(f"**BI Intern** | Excelr EdTech (Jun – Aug 2024) [cite: 15]")
-    st.write("- Designed interactive dashboards using Power BI and Excel for business insights[cite: 16].")
+    st.header("Work History")
+    st.write("**Data Science Intern** | Codtech IT Solutions (May – Jul 2025)")
+    st.write("- Built automated predictive pipelines and optimized model performance.")
+    
+    st.write("**Business Intelligence Intern** | Excelr EdTech (Jun – Aug 2024)")
+    st.write("- Designed interactive dashboards using Power BI and Excel to derive business insights.")
 
 with tab2:
     st.header("Technical Arsenal")
-    k1, k2, k3 = st.columns(3)
-    with k1:
-        st.markdown("### Languages")
-        st.write("Python, SQL, Java, JavaScript [cite: 8]")
-    with k2:
-        st.markdown("### AI / ML")
-        st.write("LangChain, RAG, LLMs, Reinforcement Learning, TensorFlow [cite: 8]")
-    with k3:
-        st.markdown("### Data & BI")
-        st.write("Power BI, Excel (Advanced), Tableau, Pandas, NumPy [cite: 9]")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write("**Languages:** Python, SQL, Java, JavaScript")
+        st.write("**AI/ML:** TensorFlow, Scikit-learn, LangChain, RAG, Reinforcement Learning")
+    with col2:
+        st.write("**Data & BI:** Power BI, Tableau, Excel (Advanced), Pandas, NumPy")
+        st.write("**Web & DB:** MERN Stack, Streamlit, MySQL, ChromaDB")
 
 with tab3:
     st.header("Resume")
     
-    # Download Button
-    with open("Sarath_Babu_Resume.pdf", "rb") as f:
-        st.download_button(
-            label="📥 Download Resume (PDF)",
-            data=f,
-            file_name="Sarath_Babu_Resume.pdf",
-            mime="application/pdf"
-        )
-    
-    # Resume Viewer (Iframe)
+    # Check for PDF file and display
     try:
-        resume_viewer = get_pdf_display("Sarath_Babu_Resume.pdf")
-        st.markdown(resume_viewer, unsafe_allow_html=True)
+        with open("Sarath_Babu_Resume.pdf", "rb") as f:
+            st.download_button(
+                label="📥 Download My Resume (PDF)",
+                data=f,
+                file_name="Sarath_Babu_Resume.pdf",
+                mime="application/pdf"
+            )
+        
+        st.markdown(get_pdf_display("Sarath_Babu_Resume.pdf"), unsafe_allow_html=True)
     except FileNotFoundError:
-        st.error("Please ensure 'Sarath_Babu_Resume.pdf' is in the same directory as this script.")
+        st.warning("Please upload 'Sarath_Babu_Resume.pdf' to your repository to enable the viewer.")
 
 # --- FOOTER ---
-st.write("---")
-st.caption("Developed by Sarath Babu | 2026 Grad")
+st.divider()
+st.caption("© 2026 Sarath Babu | Built with Streamlit")
